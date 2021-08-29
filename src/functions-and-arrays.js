@@ -1,9 +1,9 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers(first_number, second_number){
-  if(first_number > second_number){
-    return first_number
+function maxOfTwoNumbers(num1, num2){
+  if(num1 > num2){
+    return num1
   }else{
-    return second_number
+    return num2
   }
 }
 
@@ -11,17 +11,20 @@ function maxOfTwoNumbers(first_number, second_number){
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-  function findLongestWord(array) {
-    if (array.length === 0) {
+  function findLongestWord(arr) {
+    //check if the array is empty if yes return null
+    if (arr.length === 0) {
       return null;
     }
   let longestWord = '';
-  
-  for(let i = 0; i < array.length; i++){
+  //iterating over array
+  for(let i = 0; i < arr.length; i++){
 
-    if(array[i].length > longestWord.length){
+  //checking the lenght of the current word with the longestWord
+    if(arr[i].length > longestWord.length){
       
-      longestWord = array[i];
+   //if the word we are is longer than the word we are currently becomes the new currently longest word   
+      longestWord = arr[i];
     }
   }
 
@@ -31,10 +34,10 @@ const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard',
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10, 5, 3, 5];
-
 function sumNumbers(numbers){
   let sum = 0;
 
+  
   for(let number of numbers){
     
     sum = sum + number;
@@ -42,6 +45,7 @@ function sumNumbers(numbers){
 
   return sum;
 }
+
 
 // Iteration #3.1 Bonus:
 
@@ -57,6 +61,7 @@ function averageNumbers(numbers) {
   if (numbers.length === 0) {
     return null;
   }
+  //sumNumbers is the function that we already upon created
   const average = sumNumbers(numbers) / numbers.length;
   return average;
 }
@@ -70,13 +75,28 @@ function averageWordLength(words) {
     return null;
   }
   let sum = 0;
+
+//add up all the lengths of the words in array
   for (let i = 0; i < words.length; i++) {
+
+  //get the length of the word and add it to sum
     sum += words[i].length;
   }
   return sum / words.length;
+
 }
+
 // Bonus - Iteration #4.1
-function avg() {}
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+function avg(arr) {
+  let sum = 0;
+ for(let i = 0; i < arr.length; i++){
+   sum += arr[i].length;
+ }
+ return sum / words.length;
+
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -93,15 +113,40 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  const unique = [];
+
+  //iterate over arr
+  for(let word of arr){
+  //check if the world we are at is contained in unique
+
+  if(unique.indexOf(word) === - 1)
+
+    //if not we put it in there
+    unique.push(word)
+  }
+
+  return unique
+  //after the loop return unique
+}
 
 
 
 // Iteration #6: Find elements
+
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
-
+function doesWordExist(haystack, needle) {
+  if (haystack.length === 0) {
+    return null;
+  }
+  for (let word of haystack) {
+    if (word === needle) {
+      return true
+    }
+  }
+  return false;
+}
 
 
 // Iteration #7: Count repetition
@@ -119,11 +164,18 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(haystack, needle) {
+  let count = 0;
+  for (let word of haystack) {
+    if (word === needle) {
+      count++
+    }
+  }
+  return count;
+}
 
 
-
-// Iteration #8: Bonus
+// Iteration #8: Bonus 
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -147,8 +199,19 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
-
+function greatestProduct(matrix) {
+  let result = 0;
+  let horizontal = 0;
+  let vertical = 0;
+  for (let j = 0; j < 20; j++) {
+    for (let i = 0; i < 17; i++) {
+      horizontal = matrix[j][i] * matrix[j][i + 1] * matrix[j][i + 2] * matrix[j][i + 3];
+      vertical = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      result = Math.max(horizontal, vertical, result);
+    }
+  }
+  return result;
+}
 
 
 
